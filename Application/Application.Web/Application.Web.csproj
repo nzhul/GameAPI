@@ -274,6 +274,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="GameAngularPhaser\" />
     <Folder Include="Game\Sound\" />
     <Folder Include="Game\States\" />
   </ItemGroup>
