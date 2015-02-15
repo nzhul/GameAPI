@@ -216,6 +216,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="GameAngularPhaser\libs\phaser.js" />
     <Content Include="Game\Graphics\phaser.png" />
     <Content Include="Game\app.js" />
     <Content Include="Game\Libs\require.js" />
@@ -274,7 +275,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="GameAngularPhaser\" />
     <Folder Include="Game\Sound\" />
     <Folder Include="Game\States\" />
   </ItemGroup>
