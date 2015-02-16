@@ -21,6 +21,5 @@
 
     require(['phaser', 'game'], function (Phaser, Game) {
         var game = new Game('phaser-container');
-        game.start();
     });
 }());
