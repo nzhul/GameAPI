@@ -6,12 +6,13 @@ define([
     function Game(container) {
         this.container = container;
         this.game = new Phaser.Game(800, 600, Phaser.AUTO, this.container);
-        this.Boot = function () {};
-        this.Preload = function () {};
-        this.MainMenu = function () {};
+        this.BootState = function () {};
+        this.PreloadState = function () {};
+        this.MainMenuState = function () {};
+        this.GameState = function () {};
         var assetsRoot = 'Game/Graphics/assets';
 
-        this.Boot.prototype = {
+        this.BootState.prototype = {
             preload: function () {
                 this.load.image('logo', assetsRoot + '/images/logo.png');
                 this.load.image('preloadbar', assetsRoot +'/images/preloader-bar.png');
@@ -36,11 +37,11 @@ define([
                 // physics system for movement
                 this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
-                this.state.start('Preload');
+                this.state.start('PreloadState');
             }
         };
 
-        this.Preload.prototype = {
+        this.PreloadState.prototype = {
             preload: function () {
                 // Show Loading screen
                 this.splash = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'logo');
@@ -61,11 +62,11 @@ define([
                 this.load.audio('explosion', assetsRoot + '/audio/explosion.ogg');
             },
             create: function () {
-                this.state.start('MainMenu');
+                this.state.start('MainMenuState');
             }
         };
 
-        this.MainMenu.prototype = {
+        this.MainMenuState.prototype = {
             init: function (score) {
                 var score = score || 0;
                 this.highestScore = this.highestScore || 0;
@@ -87,23 +88,57 @@ define([
                 t.anchor.set(0.5);
 
                 // Highest score
-//                text = 'Highest score: ' + this.highestScore;
-//                style = {font: '15px Arial', fill: "#fff", align: "center"};
-//
-//                var h = this.game.text(this.game.width / 2, this.game.height / 2 + 50, text, style);
-//                h.anchor.set(0.5);
+                text = 'Highest score: ' + this.highestScore;
+                style = {font: '16px Arial', fill: "#fff", align: "center"};
+
+                var h = this.game.add.text(this.game.width / 2, this.game.height / 2 + 50, text, style);
+                h.anchor.set(0.5, 1);
             },
             update: function () {
                 if(this.game.input.activePointer.justPressed()){
-                    this.game.state.start('Game');
+                    this.game.state.start('GameState');
                 }
             }
         };
 
-        this.game.state.add('Boot', this.Boot);
-        this.game.state.add('Preload', this.Preload);
-        this.game.state.add('MainMenu', this.MainMenu);
-        this.game.state.start('Boot');
+        this.GameState.prototype = {
+            create: function () {
+                // Set world dimentions
+                this.game.world.setBounds(0,0,1920,1920);
+                this.background = this.game.add.tileSprite(0,0,this.game.world.width, this.game.world.height, 'space');
+
+                // Create player
+                this.player = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'playership');
+                this.player.scale.setTo(2);
+
+                this.player.animations.add('fly', [0,1,2,3], 5, true);
+                this.player.animations.play('fly');
+
+                // Player initial score of zero
+                this.playerScore = 0;
+
+                // enable player physics
+                this.game.physics.arcade.enable(this.player);
+                this.playerSpeed = 120;
+                this.player.body.collideWorldBounds = true;
+
+                //the camera will follow the player in the world
+                this.game.camera.follow(this.player);
+            },
+            update: function () {
+                if(this.game.input.activePointer.justPressed()){
+
+                    // move on the direction of the input
+                    this.game.physics.arcade.moveToPointer(this.player, this.playerSpeed);
+                }
+            }
+        };
+
+        this.game.state.add('BootState', this.BootState);
+        this.game.state.add('PreloadState', this.PreloadState);
+        this.game.state.add('MainMenuState', this.MainMenuState);
+        this.game.state.add('GameState', this.GameState);
+        this.game.state.start('BootState');
     }
 
     Game.prototype = {
