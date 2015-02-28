@@ -8,7 +8,8 @@
             phaser: 'Libs/phaser',
             game: 'Models/game',
             bootState: 'States/BootState',
-            preloadState: 'States/PreloadState'
+            preloadState: 'States/PreloadState',
+            gameState: 'States/GameState'
         },
 
         shim: {
@@ -23,6 +24,10 @@
             },
             'bootState': {
                 exports: 'BootState'
+            }
+            ,
+            'gameState': {
+                exports: 'GameState'
             }
         }
     });
