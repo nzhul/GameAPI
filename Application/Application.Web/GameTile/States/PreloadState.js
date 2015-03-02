@@ -18,6 +18,8 @@ define([], function () {
                 this.load.image('stone', 'Graphics/assets/images/stone.png');
                 //this.load.image('player', 'Graphics/assets/images/hero-single.png');
                 this.load.spritesheet('player', 'Graphics/assets/images/hero.png', 32, 32);
+                this.load.audio('wood-collect', 'Sound/wood3.ogg');
+                this.load.audio('iron-collect', 'Sound/metal10.ogg');
 
             },
             create: function () {

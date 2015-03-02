@@ -8,6 +8,8 @@ define([], function () {
         GameState.prototype = {
             create: function () {
                 this.map = this.game.add.tilemap('level1');
+                this.woodCollectSound = this.game.add.audio('wood-collect');
+                this.ironCollectSound = this.game.add.audio('iron-collect');
 
                 // The first parameter is the tileset name as specified in Tiled, the second is the key to the asset
                 this.map.addTilesetImage('big-tileset', 'gameTiles');
@@ -84,6 +86,11 @@ define([], function () {
             },
             collect: function (player, collectable) {
                 console.log('Got some resource! - ' + collectable.sprite);
+                if(collectable.sprite == 'wood'){
+                    this.woodCollectSound.play();
+                } else {
+                    this.ironCollectSound.play();
+                }
                 collectable.destroy();
             },
             findObjectsByType: function (type, map, layer) {
