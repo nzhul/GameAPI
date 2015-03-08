@@ -9,6 +9,7 @@
             game: 'models/game',
             bootState: 'states/BootState',
             preloadState: 'states/PreloadState',
+            mainMenuState: 'states/MainMenuState',
             gameState: 'states/GameState'
         },
 
@@ -24,8 +25,10 @@
             },
             'bootState': {
                 exports: 'BootState'
-            }
-            ,
+            },
+            'mainMenuState': {
+              exports: 'MainMenu'
+            },
             'gameState': {
                 exports: 'GameState'
             }
