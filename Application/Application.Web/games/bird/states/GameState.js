@@ -10,6 +10,7 @@ define([], function () {
 
                 // The Bird
                 this.bird = this.game.add.sprite(100,245, 'bird');
+                this.bird.anchor.setTo(-0.2, 0.5);
                 this.game.physics.arcade.enable(this.bird);
                 this.bird.body.gravity.y = 1000;
 
@@ -37,16 +38,43 @@ define([], function () {
 
                     // Switch to MainMenu State
                 }
+
+                // Collision
                 this.game.physics.arcade.overlap(this.bird, this.pipes, this.playerCollision, null, this );
+
+                // Rotate animation
+                if(this.bird.angle < 20){
+                    this.bird.angle += 1;
+                }
             },
             jump: function () {
+
+                if(this.bird.alive == false){
+                    return;
+                }
+
                 this.bird.body.velocity.y = -350;
+
+                var animation = this.game.add.tween(this.bird);
+
+                // Set the animation to change the angle of the sprite to -20 in 100 milliseconds
+                animation.to({angle: -20},100);
+                animation.start();
             },
             playerCollision: function () {
-                this.game.time.events.remove(this.timer);
+                if(this.bird.alive == false){
+                    return;
+                }
 
-                // TODO: Add death animation and then change the state to MainMenu
-                this.game.state.start('GameState');
+                this.bird.alive = false;
+
+                this.game.time.events.remove(this.timer);
+                
+                this.pipes.forEachAlive(function (p) {
+                    p.body.velocity.x = 0;
+                }, this);
+
+                this.game.time.events.add(1200, this.gameOver, this);
             },
             addOnePipe: function (x, y) {
                 // Get the first dead pipe of our group
@@ -75,6 +103,9 @@ define([], function () {
                 var text = "0";
                 var style = {font: "20px Arial", fill:"#000", align: "center"};
                 this.scoreLabel = this.game.add.text(this.game.width-50, this.game.height-50, text, style);
+            },
+            gameOver: function () {
+                this.game.state.start('MainMenuState', true, false, this.playerScore);
             }
         };
 

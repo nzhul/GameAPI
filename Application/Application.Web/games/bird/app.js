@@ -27,7 +27,7 @@
                 exports: 'BootState'
             },
             'mainMenuState': {
-              exports: 'MainMenu'
+              exports: 'MainMenuState'
             },
             'gameState': {
                 exports: 'GameState'
