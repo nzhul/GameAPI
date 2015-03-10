@@ -12,10 +12,12 @@ define([], function () {
                 this.load.setPreloadSprite(this.preloadBar);
 
                 // Load images, sounds, tilesets and everything else for the game
-                this.game.load.image('bird', 'assets/images/bird.png');
+                this.game.load.image('bird', 'assets/images/gruhcho.png');
                 this.game.load.image('pipe', 'assets/images/pipe.png');
                 this.game.load.image('logo', 'assets/images/logo.png');
                 this.game.load.image('space-for-start', 'assets/images/space-for-start.png');
+                this.game.load.image('mountains', 'assets/images/mountains-long.png');
+                this.game.load.image('sky', 'assets/images/sky.jpg');
             },
             create: function () {
                 this.state.start('MainMenuState');

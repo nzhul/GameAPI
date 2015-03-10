@@ -8,6 +8,10 @@ define([], function () {
         GameState.prototype = {
             create: function () {
 
+                // Background
+                this.sky = this.game.add.sprite(0,0, 'sky');
+                this.mountains = this.game.add.sprite(0,345, 'mountains');
+
                 // The Bird
                 this.bird = this.game.add.sprite(100,245, 'bird');
                 this.bird.anchor.setTo(-0.2, 0.5);
@@ -46,6 +50,17 @@ define([], function () {
                 if(this.bird.angle < 20){
                     this.bird.angle += 1;
                 }
+
+
+                if (this.mountains.x <= -600) {
+                    this.mountains.x = 0;
+                }
+                this.mountains.x-=2;
+
+                if (this.sky.x <= -1284) {
+                    this.sky.x = 0;
+                }
+                this.sky.x--;
             },
             jump: function () {
 
