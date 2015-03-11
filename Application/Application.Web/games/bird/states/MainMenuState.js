@@ -20,7 +20,9 @@ define([], function () {
 
 
                 this.game.add.sprite(100,70,'logo');
-                this.game.add.sprite(172,230,'bird');
+                this.bird = this.game.add.sprite(172,230,'bird');
+                this.bird.animations.add('fly');
+                this.bird.animations.play('fly',5,true);
                 this.game.add.sprite(145,340,'space-for-start');
             },
             update: function () {

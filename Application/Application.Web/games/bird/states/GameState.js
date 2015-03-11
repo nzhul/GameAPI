@@ -15,6 +15,8 @@ define([], function () {
                 // The Bird
                 this.bird = this.game.add.sprite(100,245, 'bird');
                 this.bird.anchor.setTo(-0.2, 0.5);
+                this.bird.animations.add('fly');
+                this.bird.animations.play('fly',5,true);
                 this.game.physics.arcade.enable(this.bird);
                 this.bird.body.gravity.y = 1000;
 
@@ -46,10 +48,10 @@ define([], function () {
                 // Collision
                 this.game.physics.arcade.overlap(this.bird, this.pipes, this.playerCollision, null, this );
 
-                // Rotate animation
-                if(this.bird.angle < 20){
-                    this.bird.angle += 1;
-                }
+//                // Rotate animation
+//                if(this.bird.angle < 20){
+//                    this.bird.angle += 1;
+//                }
 
 
                 if (this.mountains.x <= -600) {
@@ -70,11 +72,11 @@ define([], function () {
 
                 this.bird.body.velocity.y = -350;
 
-                var animation = this.game.add.tween(this.bird);
-
-                // Set the animation to change the angle of the sprite to -20 in 100 milliseconds
-                animation.to({angle: -20},100);
-                animation.start();
+//                var animation = this.game.add.tween(this.bird);
+//
+//                // Set the animation to change the angle of the sprite to -20 in 100 milliseconds
+//                animation.to({angle: -20},100);
+//                animation.start();
             },
             playerCollision: function () {
                 if(this.bird.alive == false){
