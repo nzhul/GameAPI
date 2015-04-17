@@ -1,5 +1,7 @@
 ﻿using Game.Data.Repositories;
 using Game.Models;
+using Game.Models.Heroes;
+using Game.Models.Units;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -29,6 +31,16 @@ namespace Game.Data
         public IRepository<User> Users
         {
             get { return this.GetRepository<User>(); }
+        }
+
+        public IRepository<Unit> Units
+        {
+            get { return this.GetRepository<Unit>(); }
+        }
+
+        public IRepository<Hero> Heroes
+        {
+            get { return this.GetRepository<Hero>(); }
         }
 
         public int SaveChanges()

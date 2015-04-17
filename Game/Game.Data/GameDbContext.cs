@@ -1,5 +1,7 @@
 ﻿using Game.Data.Migrations;
 using Game.Models;
+using Game.Models.Heroes;
+using Game.Models.Units;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -23,5 +25,7 @@ namespace Game.Data
         }
 
         public IDbSet<User> Users { get; set; }
+        public IDbSet<Unit> Units { get; set; }
+        public IDbSet<Hero> Heroes { get; set; }
     }
 }

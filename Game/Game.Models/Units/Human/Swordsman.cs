@@ -6,36 +6,28 @@ using System.Threading.Tasks;
 
 namespace Game.Models.Units.Human
 {
-    public class Swordsman : IUnit
+    public class Swordsman : Unit
     {
         const int minDamage = 1;
         const int maxDamage = 3;
+        const string name = "Swordsman";
+        const int attack = 4;
+        const int defense = 5;
+        const int health = 10;
+        const int speed = 4;
+        const int size = 1;
+        const int growth = 14;
 
-        public int Id { get; set; }
-
-        public string Name { get; set; }
-
-        public Enums.AttackTypes AttackTypes { get; set; }
-
-        public int Attack { get; set; }
-
-        public int Defense { get; set; }
-
-        public int MinDamage { get; set; }
-
-        public int MaxDamage { get; set; }
-
-        public int Health { get; set; }
-
-        public int Speed { get; set; }
-
-        public int Size { get; set; }
-
-        public int Growth { get; set; }
-
-        public string Description { get; set; }
-
-        public int StackSize { get; set; }
+        public Swordsman(int attackAdd, int defenseAdd, int healthAdd, int speedAdd, int growthMult)
+        {
+            this.Name = name;
+            this.Attack = attack + attackAdd;
+            this.Defense = defense + defenseAdd;
+            this.Health = health + healthAdd;
+            this.Speed = speed + speedAdd;
+            this.Size = size;
+            this.Growth = growth * growthMult;
+        }
 
     }
 }
