@@ -15,7 +15,7 @@ namespace Game.Models.Units
 
         public string Name { get; set; }
 
-        public Enums.AttackTypes AttackTypes { get; set; }
+        public Enums.AttackType AttackTypes { get; set; }
 
         public int Attack { get; set; }
 

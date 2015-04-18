@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Game.Models.Units.Human
 {
+    [Table("Swordsmans")]
     public class Swordsman : Unit
     {
         const int minDamage = 1;
@@ -28,6 +30,8 @@ namespace Game.Models.Units.Human
             this.Size = size;
             this.Growth = growth * growthMult;
         }
+
+        public int SwordsmanSPECIALDAMAGE { get; set; }
 
     }
 }

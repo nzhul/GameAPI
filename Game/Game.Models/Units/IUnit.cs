@@ -13,7 +13,7 @@ namespace Game.Models.Units
 
         string Name { get; set; }
 
-        AttackTypes AttackTypes { get; set;}
+        AttackType AttackTypes { get; set;}
 
         int Attack { get; set; }
 

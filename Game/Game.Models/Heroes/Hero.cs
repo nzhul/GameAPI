@@ -29,6 +29,8 @@ namespace Game.Models.Heroes
 
         public int Intelligence { get; set; }
 
+        public virtual User Owner { get; set; }
+
         public virtual ICollection<Unit> Units
         {
             get { return this.units; }

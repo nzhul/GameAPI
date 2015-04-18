@@ -11,10 +11,6 @@ namespace Game.Web.Controllers
     {
         public ActionResult Index()
         {
-            this.Data.Users.Add(new User { Username = "gosho" });
-            this.Data.SaveChanges();
-
-
             return View();
         }
 

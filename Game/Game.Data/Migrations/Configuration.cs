@@ -16,7 +16,7 @@ namespace Game.Data.Migrations
 
         protected override void Seed(GameDbContext context)
         {
-            this.AddInitialUsers(context);
+            //this.AddInitialUsers(context);
         }
 
         private void AddInitialUsers(GameDbContext context)

@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace Game.Models.Enums
 {
-    public enum AttackTypes
+    public enum HumanUnitType
     {
-        Melee,
-        Range,
-        Cast
+        Swordsman,
+        Vanguard,
+        Bowman,
+        Crossbowman,
+        Hound,
+        WarHound
     }
 }

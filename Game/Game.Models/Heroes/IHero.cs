@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Game.Models.Units;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,5 +20,9 @@ namespace Game.Models.Heroes
         int SpellPower { get; set; }
 
         int Intelligence { get; set; }
+
+        User Owner { get; set; }
+
+        ICollection<Unit> Units { get; set; }
     }
 }
