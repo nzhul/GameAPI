@@ -151,6 +151,7 @@
     </Compile>
     <Compile Include="Validation\PropertiesMustMatchAttribute.cs" />
     <Compile Include="Validation\ValidatePasswordLengthAttribute.cs" />
+    <Compile Include="ViewModels\TownViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -227,6 +228,7 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Settings.cshtml" />
+    <Content Include="Views\Home\Towns.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

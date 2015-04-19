@@ -1,0 +1,84 @@
+﻿@model Game.Web.ViewModels.TownViewModel
+@{
+    ViewBag.Title = "Town";
+}
+<h3>@Model.Name</h3>
+<div class="row">
+    <div class="col-md-8" style="margin-top:20px;">
+        <h3>Buildings:</h3>
+        <div class="btn-group btn-group-justified">
+            <a href="#" class="btn btn-default" id="buildings-resource-dialog-opener">Resource</a>
+            <a href="#" class="btn btn-default">Army</a>
+            <a href="#" class="btn btn-default">Other</a>
+        </div>
+        <!--Dialogs-->
+        <div id="buildings-resource-dialog">
+            Loading ...
+        </div>
+        <!--Dialogs END-->
+        <hr />
+        <h3>Town army:</h3>
+        <div class="btn-group btn-group-justified">
+            <a href="#" class="btn btn-default">Unit 1</a>
+            <a href="#" class="btn btn-default">Unit 2</a>
+            <a href="#" class="btn btn-default">Unit 3</a>
+            <a href="#" class="btn btn-default">Unit 4</a>
+            <a href="#" class="btn btn-default">Unit 5</a>
+            <a href="#" class="btn btn-default">Unit 6</a>
+            <a href="#" class="btn btn-default">Unit 7</a>
+        </div>
+    </div>
+    <div class="col-md-2" style="margin-top:20px;">
+        <h3>Heroes:</h3>
+        <div class="btn-group btn-group-vertical" style="width: 100%;">
+            <a href="#" class="btn btn-default">Crack Hack</a>
+            <a href="#" class="btn btn-default">Sandro</a>
+            <a href="#" class="btn btn-default">Vidomina</a>
+        </div>
+    </div>
+    <div class="col-md-2" style="margin-top:20px;">
+        <h3>Towns:</h3>
+        <div class="btn-group btn-group-vertical" style="width: 100%;">
+            <a href="#" class="btn btn-default">Awesome Castle</a>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+<script>
+    $(function () {
+
+        $("#buildings-resource-dialog").dialog({autoOpen:false});
+
+        $("#buildings-resource-dialog-opener").on('click', function () {
+            $("#buildings-resource-dialog").dialog("open");
+            LoadBuildings();
+        });
+
+        function LoadBuildings() {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetBuildings")', // we are calling json method
+
+                dataType: 'json',
+
+                data: { id: $("#categories-dropdown").val() },
+                beforeSend: function () {
+                    console.log("BeforeSend is executed ...");
+                },
+                success: function (subCategories) {
+                    console.log(subCategories)
+
+                },
+                error: function (ex) {
+                    alert('Неуспешно листване на категориите!.' + ex);
+                }
+            });
+            return false;
+        }
+
+
+        }
+  );
+</script>
+}

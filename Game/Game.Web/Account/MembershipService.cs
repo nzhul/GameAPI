@@ -1,5 +1,7 @@
 ﻿using Game.Data;
 using Game.Models;
+using Game.Models.Towns;
+using Game.Models.Towns.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,6 +52,25 @@ namespace Game.Web.Account
 
             this.Data.Users.Add(newUser);
             this.Data.SaveChanges();
+
+            Town newTown = new Town
+            {
+                Name = "Casterly Rock",
+            };
+
+            VillageHall newVillageHall = new VillageHall
+            {
+                Name = "The Vilage Hall Bro",
+                Level = 1,
+            };
+
+            newUser.Towns.Add(newTown);
+            this.Data.SaveChanges();
+
+            newTown.Buildings.Add(newVillageHall);
+            this.Data.SaveChanges();
+            
+            
 
             return MembershipCreateStatus.Success;
         }
