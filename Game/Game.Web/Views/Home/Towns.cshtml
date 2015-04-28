@@ -57,9 +57,8 @@
 
         function LoadBuildings() {
             $.ajax({
-                type: 'POST',
-                url: '@Url.Action("GetBuildings")', // we are calling json method
-
+                type: 'GET',
+                url: '@Url.Action("GetBuildings", "Towns", new { httproute = "" })',
                 dataType: 'json',
 
                 data: { id: $("#categories-dropdown").val() },

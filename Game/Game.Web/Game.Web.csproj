@@ -137,6 +137,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\API\TownsController.cs" />
+    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -151,6 +153,7 @@
     </Compile>
     <Compile Include="Validation\PropertiesMustMatchAttribute.cs" />
     <Compile Include="Validation\ValidatePasswordLengthAttribute.cs" />
+    <Compile Include="ViewModels\BuildingViewModel.cs" />
     <Compile Include="ViewModels\TownViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
