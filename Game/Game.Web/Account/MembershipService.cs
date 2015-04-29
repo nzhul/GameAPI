@@ -2,6 +2,7 @@
 using Game.Models;
 using Game.Models.Towns;
 using Game.Models.Towns.Common;
+using Game.Models.Towns.Human;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,7 +61,13 @@ namespace Game.Web.Account
 
             VillageHall newVillageHall = new VillageHall
             {
-                Name = "The Vilage Hall Bro",
+                Name = "The Vilage Hall",
+                Level = 1,
+            };
+
+            Barracks newBarracks = new Barracks
+            {
+                Name = "This is an Barracks",
                 Level = 1,
             };
 
@@ -68,6 +75,7 @@ namespace Game.Web.Account
             this.Data.SaveChanges();
 
             newTown.Buildings.Add(newVillageHall);
+            newTown.Buildings.Add(newBarracks);
             this.Data.SaveChanges();
             
             

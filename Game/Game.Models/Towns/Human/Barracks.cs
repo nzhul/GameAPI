@@ -23,6 +23,7 @@ namespace Game.Models.Towns.Human
 
             this.ProducedUnitType = producedUnitType;
             this.ProductionRate = productionRate;
+            this.ResourceCosts = new Dictionary<ResourceType, int>();
             this.ResourceCosts.Add(ResourceType.Gold, 500);
             this.Level = level;
             this.Name = name;

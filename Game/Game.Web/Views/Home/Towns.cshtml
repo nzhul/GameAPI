@@ -6,6 +6,7 @@
 <div class="row">
     <div class="col-md-8" style="margin-top:20px;">
         <h3>Buildings:</h3>
+        <div id="handlebars-test-container"></div>
         <div class="btn-group btn-group-justified">
             <a href="#" class="btn btn-default" id="buildings-resource-dialog-opener">Resource</a>
             <a href="#" class="btn btn-default">Army</a>
@@ -14,6 +15,11 @@
         <!--Dialogs-->
         <div id="buildings-resource-dialog">
             Loading ...
+            <table>
+                <tr>
+                    <td>asd</td>
+                </tr>
+            </table>
         </div>
         <!--Dialogs END-->
         <hr />
@@ -45,11 +51,34 @@
 </div>
 
 @section scripts{
+<script type="text/x-handlebars-template" id="buildings-template">
+    <table class="table table-striped table-hover ">
+        <thead>
+            <tr>
+                <th><i class="fa fa-picture-o" title="Building"></i></th>
+                <th><i class="fa fa-signal" title="Level"></i></th>
+                <th><i class="fa fa-eur" title="Resource Cost"></i></th>
+                <th><i class="fa fa-clock-o" title="Time Required"></i></th>
+                <th><i class="fa fa-cogs" title="Action"></i></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each this}}
+            <tr>
+                <td><a href="#{{Id}}"><img src="../../Content/images/building-icon.jpg" title="{{Name}}" alt="{{Name}}" /></a></td>
+                <td>{{Level}}</td>
+                <td>xxx - xxx - xxx - xxx</td>
+                <td>6h:23m:00s</td>
+                <td><button>Build</button></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table> 
+</script>
+
 <script>
     $(function () {
-
-        $("#buildings-resource-dialog").dialog({autoOpen:false});
-
+        $("#buildings-resource-dialog").dialog({autoOpen:false, minWidth: 960});
         $("#buildings-resource-dialog-opener").on('click', function () {
             $("#buildings-resource-dialog").dialog("open");
             LoadBuildings();
@@ -60,17 +89,23 @@
                 type: 'GET',
                 url: '@Url.Action("GetBuildings", "Towns", new { httproute = "" })',
                 dataType: 'json',
-
-                data: { id: $("#categories-dropdown").val() },
                 beforeSend: function () {
                     console.log("BeforeSend is executed ...");
                 },
-                success: function (subCategories) {
-                    console.log(subCategories)
+                success: function (data) {
+                    console.log(data)
+                    var source = $("#buildings-template").html();
+                    var template = Handlebars.compile(source);
+                    var htmlOutput = template(data);
+
+                    $("#buildings-resource-dialog").html(htmlOutput);
+
+
+
 
                 },
                 error: function (ex) {
-                    alert('Неуспешно листване на категориите!.' + ex);
+                    alert('Unable to load the buildings!' + ex);
                 }
             });
             return false;
