@@ -4,22 +4,21 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
+using System.Web.Http;
 
-namespace Game.Web.Controllers
+namespace Game.Web.Controllers.API
 {
-    public class BaseController : Controller
+    public class BaseAPIController : ApiController
     {
         protected IUnitOfWork Data;
         protected IMembershipService membershipService;
-
-        public BaseController(IUnitOfWork data)
+        public BaseAPIController(IUnitOfWork data)
         {
             this.Data = data;
             this.membershipService = new MembershipService(this.Data);
         }
 
-        public BaseController()
+        public BaseAPIController()
             : this(new UnitOfWork())
         {
 

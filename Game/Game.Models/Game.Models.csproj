@@ -61,6 +61,7 @@
     <Compile Include="Towns\IResourceProducer.cs" />
     <Compile Include="Towns\ITown.cs" />
     <Compile Include="Towns\IUnitProducer.cs" />
+    <Compile Include="Towns\Resources.cs" />
     <Compile Include="Towns\Town.cs" />
     <Compile Include="Units\Human\Swordsman.cs" />
     <Compile Include="Units\IDoubleAttacker.cs" />

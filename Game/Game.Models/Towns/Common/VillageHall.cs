@@ -22,11 +22,10 @@ namespace Game.Models.Towns.Common
 
             this.ProducedResourceType = producedResourceType;
             this.ProductionRate = productionRate;
-            this.ResourceCosts = new Dictionary<ResourceType, int>();
-            this.ResourceCosts.Add(ResourceType.Gold, 1000);
             this.Level = level;
             this.Name = name;
             this.Description = description;
+            this.ResourceCosts.Gold = 500;
         }
 
 

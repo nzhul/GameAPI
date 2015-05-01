@@ -27,8 +27,7 @@ namespace Game.Web.Controllers
         [HttpGet]
         public ActionResult Towns(int id)
         {
-            string currentUserName = System.Web.HttpContext.Current.User.Identity.Name;
-            User currentUser = this.Data.Users.All().FirstOrDefault(u => u.Username == currentUserName);
+            User currentUser = this.membershipService.GetCurrentUser();
 
             foreach (var userTown in currentUser.Towns)
             {

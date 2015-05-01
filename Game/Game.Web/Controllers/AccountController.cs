@@ -40,7 +40,8 @@ namespace Game.Web.Controllers
             {
                 if (membershipService.ValidateUser(form.UserName, form.Password))
                 {
-                    formsService.SignIn(form.UserName, form.RememberMe);
+                    var theUser = this.Data.Users.All().FirstOrDefault(u => u.Username == form.UserName);
+                    formsService.SignIn(theUser.Id.ToString(), form.RememberMe);
 
                     if (!String.IsNullOrWhiteSpace(returnUrl))
                     {
@@ -78,7 +79,8 @@ namespace Game.Web.Controllers
 
                 if (createStatus == MembershipCreateStatus.Success)
                 {
-                    formsService.SignIn(form.UserName, false); /* createPersistentCookie*/
+                    var theUser = this.Data.Users.All().FirstOrDefault(u => u.Username == form.UserName);
+                    formsService.SignIn(theUser.Id.ToString(), false); /* createPersistentCookie*/
 
                     return RedirectToAction("Index", "Home");
                 }

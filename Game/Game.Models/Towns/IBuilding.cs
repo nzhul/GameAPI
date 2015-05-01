@@ -13,7 +13,7 @@ namespace Game.Models.Towns
 
         string Name { get; set; }
 
-        Dictionary<ResourceType, int> ResourceCosts { get; set; }
+        Resources ResourceCosts { get; set; }
 
         string Description { get; set; }
 

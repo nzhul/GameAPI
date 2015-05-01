@@ -1,4 +1,5 @@
-﻿using Game.Models.Heroes;
+﻿using Game.Models.Enums;
+using Game.Models.Heroes;
 using Game.Models.Towns;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,13 @@ namespace Game.Models
         {
             this.heroes = new HashSet<Hero>();
             this.towns = new HashSet<Town>();
+            this.AvailableResources = new Dictionary<ResourceType, int>();
+            this.AvailableResources.Add(ResourceType.Wood, 20);
+            this.AvailableResources.Add(ResourceType.Stone, 20);
+            this.AvailableResources.Add(ResourceType.Iron, 10);
+            this.AvailableResources.Add(ResourceType.Gold, 10000);
+            this.AvailableResources.Add(ResourceType.Gems, 5);
+            this.AvailableResources.Add(ResourceType.Brimstone, 0);
         }
 
         public int Id { get; set; }
@@ -28,6 +36,8 @@ namespace Game.Models
         public string Password { get; set; }
 
         public bool IsActive { get; set; }
+
+        public virtual Dictionary<ResourceType, int> AvailableResources { get; set; }
 
         public virtual ICollection<Hero> Heroes
         {

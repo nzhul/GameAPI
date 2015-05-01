@@ -1,5 +1,7 @@
 ﻿using Game.Data;
 using Game.Models.Towns;
+using Game.Models.Towns.Common;
+using Game.Web.Controllers.API;
 using Game.Web.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -10,20 +12,8 @@ using System.Web.Http;
 
 namespace Game.Web.Controllers
 {
-    public class TownsController : ApiController
+    public class TownsController : BaseAPIController
     {
-        protected IUnitOfWork Data;
-
-        public TownsController(IUnitOfWork data)
-        {
-            this.Data = data;
-        }
-
-        public TownsController()
-            : this(new UnitOfWork())
-        {
-
-        }
 
 
         [HttpGet]
@@ -37,5 +27,16 @@ namespace Game.Web.Controllers
                 Level = b.Level
             }));
         }
+
+        [HttpGet]
+        public IHttpActionResult UpdateResourceCost()
+        {
+            var theVillage = this.Data.Buildings.All().FirstOrDefault();
+            theVillage.ResourceCosts.Gold = 500;
+            this.Data.SaveChanges();
+
+            return Ok();
+        }
+
     }
 }

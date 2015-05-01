@@ -8,9 +8,9 @@ namespace Game.Web.Account
 {
     public class FormsAuthenticationService : IFormsAuthenticationService
     {
-        public void SignIn(string userName, bool createPersistentCookie)
+        public void SignIn(string userId, bool createPersistentCookie)
         {
-            FormsAuthentication.SetAuthCookie(userName, createPersistentCookie);
+            FormsAuthentication.SetAuthCookie(userId, createPersistentCookie);
         }
 
         public void SignOut()

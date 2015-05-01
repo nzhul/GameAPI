@@ -83,6 +83,12 @@ namespace Game.Web.Account
             return MembershipCreateStatus.Success;
         }
 
+        public User GetCurrentUser()
+        {
+            int currentUserId = int.Parse(System.Web.HttpContext.Current.User.Identity.Name);
+            return this.Data.Users.All().FirstOrDefault(u => u.Id == currentUserId);
+        }
+
         public bool ChangePassword(string userName, string oldPassword, string newPassword)
         {
             User user = this.Data.Users.All().FirstOrDefault(u => u.Username == userName);
