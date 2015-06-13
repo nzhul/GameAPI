@@ -32,6 +32,12 @@ namespace Game.Web
                       "~/Scripts/jquery-ui-1.11.4.custom/jquery-ui.css",
                       "~/Content/font-awesome.min.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/main").Include(
+                      "~/Scripts/jquery-ui-1.11.4.custom/jquery-ui.css",
+                      "~/Content/font-awesome.min.css",
+                      "~/Content/site.css"
+                ));
         }
     }
 }
